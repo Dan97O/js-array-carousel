@@ -26,7 +26,8 @@ Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda
 
 // Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for che concatena un template literal.
 
-const arrayImages = ['./assets/img/01/.webp', 
+const arrayImages = [
+'./assets/img/01.webp', 
 './assets/img/02.webp',
 './assets/img/03.webp', 
 './assets/img/04.webp',
@@ -76,3 +77,30 @@ for (let i = 0; i < arrayImages.length; i++) {
     nextImage.classList.add('active')
   
   })
+
+
+  // listen for clicks on prev button
+  const prevEl = document.querySelector('.prev')
+  prevEl.addEventListener('click', function () {
+    console.log('cliccato prev');
+  
+    console.log(slideImagesElements); //array[index]
+    // select the current slide
+    const currentSlide = slideImagesElements[activeImage]
+    console.log(currentSlide);
+    // remove the active class from the active image
+    currentSlide.classList.remove('active')
+    // incremente the value of the activeImage variable
+    activeImage-- // increment the value of activeImage of 1 every time we click on the next button
+    // select the next slide
+    console.log(activeImage);
+    const nextImage = slideImagesElements[activeImage]
+    // add the active class
+    console.log(nextImage);
+    nextImage.classList.add('active')
+  
+  })
+
+
+
+  
