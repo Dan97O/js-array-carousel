@@ -27,11 +27,11 @@ Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda
 // Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for che concatena un template literal.
 
 const arrayImages = [
-'./assets/img/01.webp', 
-'./assets/img/02.webp',
-'./assets/img/03.webp', 
-'./assets/img/04.webp',
-'./assets/img/05.webp'];
+    './assets/img/01.webp',
+    './assets/img/02.webp',
+    './assets/img/03.webp',
+    './assets/img/04.webp',
+    './assets/img/05.webp'];
 
 
 let activeImage = 0
@@ -48,13 +48,16 @@ for (let i = 0; i < arrayImages.length; i++) {
     imagesElement.insertAdjacentHTML("beforeend", imgElement)
 }
 
-  // select all slides
-  const slideImagesElements = document.querySelectorAll('.slider > .images > img')  
+// select all slides
+const slideImagesElements = document.querySelectorAll('.slider > .images > img')
 
-  const nextEl = document.querySelector('.next')
+const nextEl = document.querySelector('.next')
 
-  // listen for clicks on next button
-  nextEl.addEventListener('click', function() {
+
+
+
+// listen for clicks on next button
+nextEl.addEventListener('click', function () {
     console.log('cliccato next');
 
 
@@ -68,6 +71,11 @@ for (let i = 0; i < arrayImages.length; i++) {
     // incremente the value of the activeImage variable
     activeImage++ // increment the value of activeImage of 1 every time we click on the next button
 
+    if (activeImage == arrayImages.length) {
+        activeImage = 0;
+    }
+
+
     // select the next slide
     console.log(activeImage);
     const nextImage = slideImagesElements[activeImage]
@@ -75,15 +83,15 @@ for (let i = 0; i < arrayImages.length; i++) {
     // add the active class
     console.log(nextImage);
     nextImage.classList.add('active')
-  
-  })
+
+})
 
 
-  // listen for clicks on prev button
-  const prevEl = document.querySelector('.prev')
-  prevEl.addEventListener('click', function () {
+// listen for clicks on prev button
+const prevEl = document.querySelector('.prev')
+prevEl.addEventListener('click', function () {
     console.log('cliccato prev');
-  
+
     console.log(slideImagesElements); //array[index]
     // select the current slide
     const currentSlide = slideImagesElements[activeImage]
@@ -92,15 +100,16 @@ for (let i = 0; i < arrayImages.length; i++) {
     currentSlide.classList.remove('active')
     // incremente the value of the activeImage variable
     activeImage-- // increment the value of activeImage of 1 every time we click on the next button
+
+    if (activeImage == -1) {
+        activeImage = arrayImages.length - 1;
+    }
+
     // select the next slide
     console.log(activeImage);
     const nextImage = slideImagesElements[activeImage]
     // add the active class
     console.log(nextImage);
     nextImage.classList.add('active')
-  
-  })
 
-
-
-  
+})
