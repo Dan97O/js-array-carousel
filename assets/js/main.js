@@ -26,13 +26,17 @@ Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda
 
 // Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for che concatena un template literal.
 
-const arrayImages = ['./assets/img/01/.webp', './assets/img/02.webp', './assets/img/03.webp', './assets/img/04.webp', './assets/img/05.webp'];
+const arrayImages = ['./assets/img/01/.webp', 
+'./assets/img/02.webp',
+'./assets/img/03.webp', 
+'./assets/img/04.webp',
+'./assets/img/05.webp'];
 
-
-const imagesElement = document.querySelector('.images');
-console.log(imagesElement);
 
 let activeImage = 0
+
+const imagesElement = document.querySelector('.slider > .images');
+console.log(imagesElement);
 
 for (let i = 0; i < arrayImages.length; i++) {
     const imgSrc = arrayImages[i];
@@ -40,11 +44,11 @@ for (let i = 0; i < arrayImages.length; i++) {
     const imgElement = `<img class="img-fluid ${i === activeImage ? 'active' : ''}" src="${imgSrc}" alt="">`
     console.log(imgElement);
 
-    imagesElement.insertAdjacentHTML("afterbegin", imgElement)
+    imagesElement.insertAdjacentHTML("beforeend", imgElement)
 }
 
   // select all slides
-const slideImagesElements = document.querySelectorAll('.images > img')  
+  const slideImagesElements = document.querySelectorAll('.slider > .images > img')  
 
   const nextEl = document.querySelector('.next')
 
