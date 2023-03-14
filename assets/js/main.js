@@ -21,3 +21,54 @@ Abbiamo completato ormai da qualche giorno la sessione HTML e CSS, se non ci ric
 Costruiamo del carosello una versione statica contenente solamente un'immagine. Di questa versione statica al momento opportuno commenteremo (oscureremo) alcuni elementi per poterli riprodurre dinamicamente in js. Potremo quindi usarli come "template".
 Scriviamo sempre prima per punti il nostro algoritmo in italiano per capire cosa vogliamo fare
 Al momento giusto (ihihhi starà a voi capire quale) rispondete a questa domanda: "Quanti cicli servono?" */
+
+
+
+// Adesso rimuoviamo tutto il markup statico e inseriamo tutte le immagini dinamicamente servendoci dell'array fornito e un semplice ciclo for che concatena un template literal.
+
+const arrayImages = ['./assets/img/01/.webp', './assets/img/02.webp', './assets/img/03.webp', './assets/img/04.webp', './assets/img/05.webp'];
+
+
+const imagesElement = document.querySelector('.images');
+console.log(imagesElement);
+
+let activeImage = 0
+
+for (let i = 0; i < arrayImages.length; i++) {
+    const imgSrc = arrayImages[i];
+
+    const imgElement = `<img class="img-fluid ${i === activeImage ? 'active' : ''}" src="${imgSrc}" alt="">`
+    console.log(imgElement);
+
+    imagesElement.insertAdjacentHTML("afterbegin", imgElement)
+}
+
+  // select all slides
+const slideImagesElements = document.querySelectorAll('.images > img')  
+
+  const nextEl = document.querySelector('.next')
+
+  // listen for clicks on next button
+  nextEl.addEventListener('click', function() {
+    console.log('cliccato next');
+
+
+    // select the current slide
+    const currentSlide = slideImagesElements[activeImage]
+    console.log(currentSlide);
+
+    // remove the active class from the active image
+    currentSlide.classList.remove('active')
+
+    // incremente the value of the activeImage variable
+    activeImage++ // increment the value of activeImage of 1 every time we click on the next button
+
+    // select the next slide
+    console.log(activeImage);
+    const nextImage = slideImagesElements[activeImage]
+
+    // add the active class
+    console.log(nextImage);
+    nextImage.classList.add('active')
+  
+  })

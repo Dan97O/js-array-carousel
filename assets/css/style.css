@@ -4,13 +4,7 @@
     box-sizing: border-box;
 }
 
-.container{
-    max-width: 1200px;
-    width: 80%;
-    margin: auto;
-}
-
-.image{
+.images{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -22,7 +16,10 @@ img {
     width: 50%;
 }
 
-
+button {
+    border-radius: 50%;
+    padding: 1px ;
+}
 
 
 
