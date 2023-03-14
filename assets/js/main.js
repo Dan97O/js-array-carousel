@@ -71,6 +71,7 @@ nextEl.addEventListener('click', function () {
     // incremente the value of the activeImage variable
     activeImage++ // increment the value of activeImage of 1 every time we click on the next button
 
+    //infinite loop
     if (activeImage == arrayImages.length) {
         activeImage = 0;
     }
@@ -101,6 +102,7 @@ prevEl.addEventListener('click', function () {
     // incremente the value of the activeImage variable
     activeImage-- // increment the value of activeImage of 1 every time we click on the next button
 
+    //infinite loop
     if (activeImage == -1) {
         activeImage = arrayImages.length - 1;
     }
